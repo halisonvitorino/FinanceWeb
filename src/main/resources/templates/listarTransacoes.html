@@ -1,0 +1,120 @@
+<!doctype html>
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
+
+<head>
+    <title>Title</title>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <!-- Bootstrap CSS v5.2.1 -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-iYQeCzEYFbKjA/T2uDLTpkwGzCiq6soy8tYaI1GyVh/UjpbCx/TYkiZhlZB6+fzT" crossorigin="anonymous">
+    <!-- Link para o meu arquivo CSS -->
+    <link rel="stylesheet" type="text/css" href="/css/style.css">
+    <!-- Link para o arquivo CSS do Bootstrap Icons -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css">
+
+</head>
+
+<body>
+    <header>
+        <nav class="navbar navbar-expand-sm navbar-dark bg-dark">
+            <div class="container">
+                <a class="navbar-brand" href="/">FinanceWeb</a>
+                <button class="navbar-toggler d-lg-none" type="button" data-bs-toggle="collapse"
+                    data-bs-target="#collapsibleNavId" aria-controls="collapsibleNavId" aria-expanded="false"
+                    aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+                <div class="collapse navbar-collapse" id="collapsibleNavId">
+                    <ul class="navbar-nav me-auto mt-2 mt-lg-0">
+                        <li class="nav-item dropdown">
+                            <a class="nav-link dropdown-toggle" href="#" id="graficosId" data-bs-toggle="dropdown"
+                               aria-haspopup="true" aria-expanded="false">Graficos</a>
+                            <div class="dropdown-menu" aria-labelledby="dropdownId">
+                                <a class="dropdown-item" href="/graficoLinha">Linha</a>
+                                <a class="dropdown-item" href="/graficoPizza">Pizza</a>
+                            </div>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="#">Transações</a>
+                        </li>
+                        <li class="nav-item dropdown">
+                            <a class="nav-link dropdown-toggle" href="#" id="dropdownId" data-bs-toggle="dropdown"
+                                aria-haspopup="true" aria-expanded="false">Dropdown</a>
+                            <div class="dropdown-menu" aria-labelledby="dropdownId">
+                                <a class="dropdown-item" href="#">Action 1</a>
+                                <a class="dropdown-item" href="#">Action 2</a>
+                            </div>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="/">Sair</a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </nav>
+    </header>
+    
+    <main>
+        <div class="container">
+            <div class="m-4 ms-2">
+                <h1>Transações</h1>
+            </div>
+            <div class="col col-12">
+                <table class="table ms-2 table-success table-hover table-sm align-middle">
+
+                    <thead>
+                        <tr>
+                            <th class="col col-3 table-dark bg-transparent" scope="col">Descrição</th>
+                            <th class="col col-1 table-dark bg-transparent" scope="col">Tipo</th>
+                            <th class="col col-2 table-dark bg-transparent" scope="col">Valor</th>
+                            <th class="col col-2 table-dark bg-transparent" scope="col">Data</th>
+                            <th class="col col-1 table-dark bg-transparent" scope="col"></th>
+                        </tr>
+                    </thead>
+
+                    <tbody th:each="transacao : ${transacao}">
+                        <tr>
+                            <td class="table-dark bg-transparent" th:text="${transacao.descricao}"></td>
+                            <td class="table-dark bg-transparent" th:text="${transacao.tipo}"></td>
+                            <td class="table-dark bg-transparent" th:text="${transacao.valor}"></td>
+                            <td class="table-dark bg-transparent" th:text="${transacao.data}"></td>
+                            <td class="table-dark bg-transparent">
+                                <a class="btn-sm ms-3"
+                                    th:href="${(#mvc.url('FC#alterarTransacoes').arg(0, transacao.id).build())}"
+                                    role="button"><i class="bi bi-pencil" style="font-size: 1rem; color: blue;"></i>
+                                </a>
+                                <a class="btn-sm ms-3"
+                                    th:href="${(#mvc.url('FC#excluiTransacoes').arg(0, transacao.id).build())}"
+                                    role="button"><i class="bi bi-trash" style="font-size: 1rem; color: red;"></i>
+                                </a>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+                <div>
+                    <a class="btn-sm ms-2" href="/cadastrarTransacoes" role="button">
+                        <i class="bi bi-plus-lg" style="font-weight: bold; font-size: 2rem; color: rgba(1, 92, 106, 1);"></i>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <footer>
+        <!-- place footer here -->
+    </footer>
+
+    <!-- Bootstrap JavaScript Libraries -->
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.6/dist/umd/popper.min.js"
+        integrity="sha384-oBqDVmMz9ATKxIep9tiCxS/Z9fNfEXiDAYTujMAeBAsjFuCZSmKbSSUnQlmh/jp3" crossorigin="anonymous">
+        </script>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/js/bootstrap.min.js"
+        integrity="sha384-7VPbUDkoPSGFnVtYi0QogXtr74QeVeeIs99Qfg5YCF+TidwNdjvaKZX19NZ/e6oz" crossorigin="anonymous">
+        </script>
+</body>
+
+</html>

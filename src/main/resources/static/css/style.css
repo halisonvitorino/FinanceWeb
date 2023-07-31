@@ -1,0 +1,54 @@
+body {
+  background-image: url('../imagens/planofundo3.jpg');
+  background-size: cover; /* Para garantir que a imagem ocupe toda a tela */
+  background-repeat: no-repeat;
+ }
+
+#grafico-container {
+    width:  1000px; /* Defina a largura do container do gráfico */
+    height: 400px;
+    padding: 20px; /* Espaçamento interno dentro do container */
+}
+
+#grafico-container-pizza {
+    width:  500px; /* Defina a largura do container do gráfico */
+    padding: 20px; /* Espaçamento interno dentro do container */
+}
+
+col {
+   color: rgba(1, 92, 106, 1); 
+}
+
+h1 {
+   color: rgba(1, 92, 106, 1); 
+}
+
+.dropdown-menu {
+   color: rgba(1, 92, 106, 1);
+   background-color: cadetblue;
+}
+
+#usuarioNomeId{
+   color: rgba(1, 92, 106, 1);
+}
+
+#usuarioEmailId{
+   color: rgba(1, 92, 106, 1);
+}
+
+#usuarioSenhaId{
+   color: rgba(1, 92, 106, 1);
+}
+
+#botaoUsuarioId{
+   color: rgba(1, 92, 106, 1);
+}
+
+.form-label{
+   font-weight: bold;
+}
+
+label{
+   color: rgba(1, 92, 106, 1);
+   font-weight: bold;
+}
