@@ -12,5 +12,10 @@ public interface TransacaoRep extends CrudRepository<Transacao, String> {
     Iterable<Transacao> findAll();
     @Query("SELECT t.descricao, SUM(t.valor) FROM Transacao t GROUP BY t.descricao")
     List<Object[]> somarValoresPorDescricao();
-    
+
+    @Query("SELECT t.tipo, SUM(t.valor) " +
+            "FROM Transacao t " +
+            "WHERE t.tipo IN ('debito', 'credito') " +
+            "GROUP BY t.tipo")
+    List<Object[]> somarValoresPorTipo();
 }

@@ -106,6 +106,12 @@ public class FinanceController {
         return "graficoPizza";
     }
 
+    @RequestMapping("/graficoColunaDebitoCredito")
+    public String graficoColunaDebitoCredito(Model model) {
+        model.addAttribute("transacao", transacaoRep.somarValoresPorTipo());
+        return "graficoColunaDebitoCredito";
+    }
+
     // Pagina Lista Usuarios
     // --------------------------------------------------------------------------------------------
     @RequestMapping("/listaUsuario")

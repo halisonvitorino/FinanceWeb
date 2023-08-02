@@ -10,8 +10,6 @@ import org.springframework.orm.jpa.vendor.Database;
 import org.springframework.orm.jpa.vendor.HibernateJpaVendorAdapter;
 import org.springframework.transaction.annotation.EnableTransactionManagement;
 
-
-
 @Configuration
 public class DataConfig {
 
@@ -22,7 +20,7 @@ public class DataConfig {
                 .driverClassName("com.mysql.cj.jdbc.Driver")
                 .url("jdbc:mysql://localhost:3306/db_financeweb")
                 .username("root")
-                .password("root")
+                .password("")
                 .build();
     }
 
