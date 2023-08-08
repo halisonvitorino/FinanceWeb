@@ -4,11 +4,14 @@ import com.halisonvitorino.FinanceWeb.models.Transacao;
 import com.halisonvitorino.FinanceWeb.models.Usuario;
 import com.halisonvitorino.FinanceWeb.repository.TransacaoRep;
 import com.halisonvitorino.FinanceWeb.repository.UsuarioRep;
+import com.halisonvitorino.FinanceWeb.service.TokenService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
 import org.springframework.validation.annotation.Validated;
+import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
@@ -22,34 +25,30 @@ public class FinanceController {
     private TransacaoRep transacaoRep;
     @Autowired
     private UsuarioRep usuarioRep;
+    @Autowired
+    private AuthenticationManager authenticationManager;
+    @Autowired
+    private TokenService tokenService;
 
     // Pagina Inicial
-    @RequestMapping("/")
+    @GetMapping("/")
     public String index() {
         return "index";
     }
 
-    // Pagina de Login
-    @RequestMapping(value = "/login", method = RequestMethod.GET)
+    // Pagina login
+    @GetMapping("/login")
     public String login() {
         return "login";
     }
 
-    // Pagina novo usuario
-    @RequestMapping(value = "/novoUsuario", method = RequestMethod.GET)
+    // Pagina Novo Usuario
+    @GetMapping("/novoUsuario")
     public String novoUsuario() {
         return "novoUsuario";
     }
 
-    // Salvar novo usuario
-    @RequestMapping(value = "/novoUsuario", method = RequestMethod.POST)
-    public String cadastroUsuario(Usuario usuario) {
-        usuarioRep.save(usuario);
-        return "redirect:/";
-    }
-
-    // Pagina Lista Transaçoes
-    // -------------------------------------------------------------------------------------
+    // Pagina Lista Transaçoes -------------------------------------------------------------------------------------
     @RequestMapping("/listarTransacoes")
     public ModelAndView listaTransacoes() {
         ModelAndView modelAndView = new ModelAndView("/listarTransacoes");
